@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const SwipeScreen = () => {
   const [catUrl, setCatUrl] = useState("https://cataas.com/cat");
@@ -8,7 +8,7 @@ const SwipeScreen = () => {
   const [dragDirection, setDragDirection] = useState(null);
 
   const navigate = useNavigate();
-  
+
   const handleImageClick = () => {
     navigate("/cat-image", { state: { catUrl } });
   };
@@ -26,7 +26,7 @@ const SwipeScreen = () => {
   };
 
   const handleDragEnd = () => {
-    console.log(dragDirection);
+    console.log(`Swiped: ${dragDirection}`);
     fetchCatImage();
   };
 
@@ -52,7 +52,7 @@ const SwipeScreen = () => {
         src={catUrl}
         alt="Cat"
         onClick={handleImageClick}
-        style={{ maxWidth: "100%", maxHeight: "100%" }}
+        style={{ width: "800px", height: "800px", objectFit: "cover" }}
         drag="x"
         dragConstraints={{ left: 0, right: 0 }}
         onDragStart={handleDragStart}
